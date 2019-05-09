@@ -11,5 +11,5 @@ module Base
   end
 
   @workflow  = Alfred3::Workflow.new
-  @dir_path  = FileUtils.mkdir_p("#{ENV['HOME']}/Library/Application Support/Alfred 3/Workflow Data/app.kevinyang.papertrail.alfredworkflow").first
+  @dir_path  = FileUtils.mkdir_p("#{ENV['HOME']}/Library/Application Support/Alfred 3/Workflow Data/app.kevinyang.jenkins.alfredworkflow").first
 end

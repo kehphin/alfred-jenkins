@@ -54,7 +54,7 @@ class Search
   def fetch_app_list
     response = HTTParty.get(
       "https://jenkins.ops.salsify.com/search/suggest?query=#{query}",
-      :basic_auth => { :username => 'kehphin' , :password => '4b5ea4486d41a015de55a7a0dea26cc8' },
+      :basic_auth => { :username => 'kehphin' , :password => Base.access_token },
       :verify => false
     ).parsed_response
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>app.kevinyang.heroku.alfredworkflow</string>
+	<string>app.kevinyang.jenkins.alfredworkflow</string>
 	<key>category</key>
 	<string>Internet</string>
 	<key>connections</key>
@@ -121,9 +121,9 @@
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>You can now search for your apps on Heroku</string>
+				<string>You can now search for your apps on Jenkins</string>
 				<key>title</key>
-				<string>Heroku is now ready!</string>
+				<string>Jenkins is now ready!</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
@@ -156,7 +156,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Saving token...</string>
+				<string>Saving password...</string>
 				<key>script</key>
 				<string>/usr/bin/ruby ./setup.rb "{query}"</string>
 				<key>scriptargtype</key>
@@ -164,7 +164,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Enter your papertrail access token</string>
+				<string>Enter your Jenkins access password</string>
 				<key>title</key>
 				<string>Setup Jenkins</string>
 				<key>type</key>
