@@ -10,7 +10,7 @@ This Plugin allows you to search for projects within your Jenkins system. When s
 
 1. Go to [Releases](https://github.com/kehphin/alfred-jenkins/releases) and download the latest `.alfredworkflow` release.
 2. Open and save in Alfred 3.
-3. Set your Jenkins Url, User Id and API Token via the `jksetup <url> <user_id> <api_token>` command. This data is stored locally on your machine at `Library/Application Support/Alfred 3/Workflow Data/app.kevinyang.jenkins.alfredworkflow`.
+3. Set your Jenkins Url, User Id and API Token via the `jksetup` command. E.g. `jksetup https://jenkins-hostname.com username123 password456`. This data is stored locally on your machine at `Library/Application Support/Alfred 3/Workflow Data/app.kevinyang.jenkins.alfredworkflow`.
 4. Use the `jk` command to your liking!
 
 ## Development
