@@ -11,7 +11,7 @@ class Search
   end
 
   def search
-    load_access_token
+    load_credentials
     output_json
 
   rescue => e
@@ -26,9 +26,10 @@ class Search
 
   private
 
-  def load_access_token
+  def load_credentials
     config = YAML.load_file("#{Base.dir_path}/settings.yml")
-    Base.access_token = config['access_token']
+    Base.user_id = config['user_id']
+    Base.api_token = config['api_token']
   end
 
   def output_json
@@ -54,7 +55,7 @@ class Search
   def fetch_app_list
     response = HTTParty.get(
       "https://jenkins.ops.salsify.com/search/suggest?query=#{query}",
-      :basic_auth => { :username => 'kehphin' , :password => Base.access_token },
+      :basic_auth => { :username => Base.user_id , :password => Base.api_token },
       :verify => false
     ).parsed_response
 
@@ -90,9 +91,8 @@ class Search
 
   def setup_json
     Base.workflow.result
-        .title('Papertrail is not set up yet!')
-        .subtitle('Press Enter to find api key, then enter the ptsetup command to save it.')
-        .arg('https://papertrailapp.com/account/profile')
+        .title('Jenkins is not set up yet!')
+        .subtitle('Find your Jenkins User Id and API Token, then use the `jksetup` command.')
         .icon('img/icon.png')
   end
 end

@@ -7,7 +7,7 @@ require 'yaml'
 module Base
   class << self
     attr_reader :workflow, :dir_path
-    attr_accessor :access_token
+    attr_accessor :user_id, :api_token
   end
 
   @workflow  = Alfred3::Workflow.new
