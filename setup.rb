@@ -3,12 +3,14 @@ require_relative 'base'
 class Setup
   include Base
 
+  attr_reader :url
   attr_reader :user_id
   attr_reader :api_token
 
   def initialize
-    @user_id = ARGV[0].split(' ')[0]
-    @api_token = ARGV[0].split(' ')[1]
+    @url = ARGV[0].split(' ')[0]
+    @user_id = ARGV[0].split(' ')[1]
+    @api_token = ARGV[0].split(' ')[2]
   end
 
   def setup
@@ -23,6 +25,7 @@ class Setup
     FileUtils.touch(file_path) unless File.exist?(file_path)
     config = YAML.load_file(file_path) || {}
 
+    config['url'] = url
     config['user_id'] = user_id
     config['api_token'] = api_token
     File.open(file_path, 'w') { |f| YAML.dump(config, f) }
@@ -35,7 +38,7 @@ class Setup
         .type('default')
         .valid(true)
         .icon('img/icon.png')
-        .arg('https://genius.com/api-clients/new')
+        .arg('')
 
     print Base.workflow.output
   end

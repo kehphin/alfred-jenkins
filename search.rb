@@ -28,6 +28,7 @@ class Search
 
   def load_credentials
     config = YAML.load_file("#{Base.dir_path}/settings.yml")
+    Base.url = config['url']
     Base.user_id = config['user_id']
     Base.api_token = config['api_token']
   end
@@ -45,7 +46,7 @@ class Search
       apps = YAML.load_file("#{Base.dir_path}/search.yml")
     end
 
-    if apps.empty?
+    if apps.select{|app_name| app_name&.include?(query)}.empty?
       apps = fetch_app_list
     end
 
@@ -54,10 +55,13 @@ class Search
 
   def fetch_app_list
     response = HTTParty.get(
-      "https://jenkins.ops.salsify.com/search/suggest?query=#{query}",
+      "#{Base.url}/search/suggest?query=#{query}",
       :basic_auth => { :username => Base.user_id , :password => Base.api_token },
       :verify => false
     ).parsed_response
+
+    return [] if response['suggestions'].nil?
+
 
     apps = response['suggestions'].map {|app| app['name']}
 
@@ -69,7 +73,7 @@ class Search
   end
 
   def results_json(app)
-    url = "https://papertrailapp.com/systems/#{app}/events"
+    url = "#{Base.url}/job/#{app}"
 
     Base.workflow.result
         .uid(app)
